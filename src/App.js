@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LibraryCard from './LibraryCard';
 import { Container, Grid } from '@mui/material';
-import Header from './Header'; // Import Header component
-import SummarySection from './SummarySection'; // Import SummarySection component
+import Header from './Header';
+import SummarySection from './SummarySection';
 
 function App() {
+  const [npmUsername, setNpmUsername] = useState('abhinaba-ghosh'); // Set default npm username
+  const [githubUsername, setGithubUsername] = useState('abhinaba-ghosh'); // Set default GitHub username
   const [libraries, setLibraries] = useState([]);
   const [expanded, setExpanded] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios.get('https://registry.npmjs.org/-/v1/search', {
-      params: { text: 'maintainer:abhinaba-ghosh' }
+      params: { text: `maintainer:${npmUsername}` }
     }).then(async (response) => {
       const packages = response.data.objects.map(obj => obj.package.name);
 
@@ -27,13 +30,31 @@ function App() {
       librariesWithDownloads.sort((a, b) => b.downloads - a.downloads);
 
       setLibraries(librariesWithDownloads);
-    }).catch(error => console.error('Error fetching library names:', error));
-  }, []);
+    }).catch(error => {
+      console.error('Error fetching library names:', error);
+      setError(error);
+    });
+  }, [npmUsername]);
+
+  const handleUserSubmit = (npmUser, githubUser) => {
+    setNpmUsername(npmUser);
+    setGithubUsername(githubUser);
+    // Optionally update the URL for sharing
+  };
+
+  if (error) {
+    return (
+      <Container>
+        <Header onUserSubmit={handleUserSubmit} />
+        <p>Error loading data. Please try again.</p>
+      </Container>
+    );
+  }
 
   return (
     <Container>
-      <Header /> {/* Add the Header component */}
-      <SummarySection /> {/* Add the SummarySection component */}
+      <Header onUserSubmit={handleUserSubmit} />
+      <SummarySection githubUsername={githubUsername} />
       <Grid container spacing={3}>
         {libraries.map((lib, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>

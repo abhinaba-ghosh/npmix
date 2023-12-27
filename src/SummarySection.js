@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
+import { Card, CardContent, Typography, Link } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import './SummarySection.css';
 
-function SummarySection() {
+function SummarySection({ githubUsername }) {
   const [githubData, setGithubData] = useState({});
   const [libraryCount, setLibraryCount] = useState(0);
   const [totalDownloads, setTotalDownloads] = useState(0);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch GitHub details
     axios
-      .get('https://api.github.com/users/abhinaba-ghosh')
+      .get(`https://api.github.com/users/${githubUsername}`)
       .then((response) => {
         setGithubData(response.data);
       })
@@ -21,15 +21,13 @@ function SummarySection() {
         console.error('Error fetching GitHub data:', error);
       });
 
-    // Fetch npm library information
     axios
       .get('https://registry.npmjs.org/-/v1/search', {
-        params: { text: 'maintainer:abhinaba-ghosh' }
+        params: { text: `maintainer:${githubUsername}` }
       })
       .then(async (response) => {
         const packages = response.data.objects.map((obj) => obj.package.name);
 
-        // Fetch download counts for each library and calculate the total downloads
         const downloadCounts = await Promise.all(
           packages.map((pkg) =>
             axios.get(`https://api.npmjs.org/downloads/point/1900-01-01:3000-01-01/${pkg}`)
@@ -45,9 +43,8 @@ function SummarySection() {
 
         setLibraryCount(librariesWithDownloads.length);
 
-        // Calculate the total download count
         const totalDownloadCount = librariesWithDownloads.reduce((total, lib) => {
-          return total + (lib.downloads || 0); // Ensure downloads is defined and not NaN
+          return total + (lib.downloads || 0);
         }, 0);
 
         setTotalDownloads(totalDownloadCount);
@@ -56,7 +53,7 @@ function SummarySection() {
         setError(error);
         console.error('Error fetching library data:', error);
       });
-  }, []);
+  }, [githubUsername]);
 
   if (error) {
     return (
@@ -70,12 +67,8 @@ function SummarySection() {
     );
   }
 
-  // Function to round to millions and append "Millions"
   const formatMillions = (count) => {
-    if (count >= 1000000) {
-      return `${(count / 1000000).toFixed(1)} Millions`;
-    }
-    return count.toString();
+    return count >= 1000000 ? `${(count / 1000000).toFixed(1)}M` : count.toString();
   };
 
   return (
@@ -87,6 +80,9 @@ function SummarySection() {
         <CardContent className="profile-details">
           <Typography variant="h5" gutterBottom>
             {githubData?.name}
+            <Link href={`https://github.com/${githubUsername}`} target="_blank" rel="noopener noreferrer">
+              <GitHubIcon style={{ marginLeft: 10, verticalAlign: 'middle' }} />
+            </Link>
           </Typography>
           <Typography variant="body2" color="textSecondary">
             {githubData?.bio}
