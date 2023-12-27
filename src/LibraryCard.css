@@ -1,0 +1,88 @@
+/* LibraryCard.css */
+
+/* LibraryCard styles */
+.library-card {
+    background-color: #ffffff; /* White background */
+    color: #333; /* Dark text color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    margin: 10px;
+    padding: 20px;
+    height: 250px; /* Fixed height for collapsed state */
+    transition: transform 0.3s, box-shadow 0.3s;
+  
+    /* Scale up and add a subtle lift effect on hover */
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+  }
+  
+  /* Package name styles */
+  .package-name {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Link styles */
+  .package-name a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+    margin-right: 10px;
+    &:hover {
+      text-decoration: underline; /* Underline on hover */
+    }
+  }
+  
+  /* Launch button styles */
+  .launch-button {
+    color: #007bff; /* Blue launch button color */
+    margin-left: auto;
+    font-size: 18px;
+  }
+  
+  /* Downloads and description styles */
+  .downloads, .description {
+    font-size: 14px; /* Smaller text size for download and description */
+    color: #777; /* Subtle text color */
+    margin-top: 8px;
+  }
+  
+  /* Expand section styles */
+  .expand-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  
+    /* Expand button styles */
+    .expand-button {
+      color: #777; /* Subtle expand/collapse button color */
+      font-size: 24px;
+      transform-origin: center;
+      transition: transform 0.3s, color 0.3s;
+    }
+  
+    /* Expand text styles */
+    .expand-text {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  
+    /* Rotate and change button color on hover */
+    &:hover {
+      .expand-button {
+        color: #007bff; /* Blue button color on hover */
+        transform: scale(1.2) rotate(90deg); /* Rotate and scale up on hover */
+      }
+    }
+  }
+  
+  .expanded {
+    height: auto; /* Auto height for expanded state */
+    background-color: #f5f5f5; /* Lighter background color when expanded */
+  }

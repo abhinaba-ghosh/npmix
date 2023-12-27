@@ -1,0 +1,40 @@
+.summary-card {
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+    width: calc(100% - 40px); /* Adjust width to include padding */
+    max-width: 350px; /* Adjust max-width as per your design requirements */
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow to prevent content from spilling out */
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    padding: 20px; /* Add padding to prevent content from touching the edges */
+  }
+  
+  .summary-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    margin-top: 20px; /* Space from the top of the card */
+    border: 4px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-details {
+    width: 100%; /* Ensure the details take up the full card width */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Rest of the styles remain the same */
+  
+  /* Responsive adjustments */
+  @media (max-width: 400px) {
+    .summary-card {
+      width: 95%; /* Smaller screens get a higher width percentage */
+      margin: 10px auto;
+    }
+  }
+  
