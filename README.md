@@ -1,4 +1,4 @@
-# NPM Library Trends
+# NPMix
 
 
 View the page here: [NPM Trends Profile](https://abhinaba-ghosh.github.io/npm-trends-profile/)
