@@ -1,7 +1,7 @@
 # NPMix
 
 
-View the page here: [NPM Trends Profile](https://abhinaba-ghosh.github.io/npm-trends-profile/)
+View the page here: [NPMix](hhttps://abhinaba-ghosh.github.io/npmix/)
 
 This web application provides insights into NPM libraries, displaying download trends, total download counts, and GitHub profile information. It's designed for library maintainers and users interested in library statistics.
 
