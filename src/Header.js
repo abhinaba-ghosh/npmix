@@ -1,5 +1,7 @@
 import React from 'react';
-import { TextField, Typography, Box } from '@mui/material';
+import { TextField, Typography, Box, Link } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function Header({ npmUsername, setNpmUsername }) {
   const handleNpmUserChange = (event) => {
@@ -14,6 +16,17 @@ function Header({ npmUsername, setNpmUsername }) {
       <Typography variant="body1" gutterBottom style={{ color: '#777' }}>
         Discover your NPM libraries effortlessly.
       </Typography>
+      <Link
+        href="https://github.com/abhinaba-ghosh/NPMix"  // Replace with your GitHub repo link
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none' }}
+      >
+        <Typography variant="body1" style={{ color: '#007BFF' }}>
+          <FontAwesomeIcon icon={faGithub} style={{ marginRight: '8px' }} />
+          Fork and Contribute on GitHub
+        </Typography>
+      </Link>
       <TextField
         label="Enter NPM Username or Organization"
         variant="outlined"
