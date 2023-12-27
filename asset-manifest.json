@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/npm-trends-profile/static/css/main.d90e2848.css",
-    "main.js": "/npm-trends-profile/static/js/main.73e978ec.js",
-    "static/js/787.d1d7333f.chunk.js": "/npm-trends-profile/static/js/787.d1d7333f.chunk.js",
-    "index.html": "/npm-trends-profile/index.html",
-    "main.d90e2848.css.map": "/npm-trends-profile/static/css/main.d90e2848.css.map",
-    "main.73e978ec.js.map": "/npm-trends-profile/static/js/main.73e978ec.js.map",
-    "787.d1d7333f.chunk.js.map": "/npm-trends-profile/static/js/787.d1d7333f.chunk.js.map"
+    "main.css": "/npmix/static/css/main.d90e2848.css",
+    "main.js": "/npmix/static/js/main.df092fba.js",
+    "static/js/787.d1d7333f.chunk.js": "/npmix/static/js/787.d1d7333f.chunk.js",
+    "index.html": "/npmix/index.html",
+    "main.d90e2848.css.map": "/npmix/static/css/main.d90e2848.css.map",
+    "main.df092fba.js.map": "/npmix/static/js/main.df092fba.js.map",
+    "787.d1d7333f.chunk.js.map": "/npmix/static/js/787.d1d7333f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d90e2848.css",
-    "static/js/main.73e978ec.js"
+    "static/js/main.df092fba.js"
   ]
 }
