@@ -22,20 +22,6 @@ Ensure you have the following installed:
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/)
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd your-repo-name
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
 
 ### Running the Application
 
@@ -44,6 +30,13 @@ Start the application by running:
 npm start
 ```
 The application will be available at `http://localhost:3000`.
+
+### Build the Application
+
+Build the application by running:
+```bash
+npm build
+```
 
 ## Usage
 
