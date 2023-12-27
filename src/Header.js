@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import React from 'react';
+import { TextField, Typography, Box } from '@mui/material';
 
-function Header({ onUserSubmit }) {
-  const [npmUser, setNpmUser] = useState('');
-  const [githubUser, setGithubUser] = useState('');
-
-  const handleSubmit = () => {
-    onUserSubmit(npmUser, githubUser);
+function Header({ npmUsername, setNpmUsername }) {
+  const handleNpmUserChange = (event) => {
+    setNpmUsername(event.target.value);
   };
 
   return (
-    <header>
-      <h1>NPM Library Trends</h1>
-      <p>Discover and explore trending NPM libraries</p>
-      <div>
-        <TextField label="NPM Username" value={npmUser} onChange={(e) => setNpmUser(e.target.value)} />
-        <TextField label="GitHub Username" value={githubUser} onChange={(e) => setGithubUser(e.target.value)} />
-        <Button onClick={handleSubmit}>Generate Profile</Button>
-      </div>
-    </header>
+    <Box sx={{ textAlign: 'center', marginTop: '20px' }}>
+      <Typography variant="h4" gutterBottom style={{ fontWeight: 'bold', color: '#007BFF' }}>
+        Welcome to NPMix
+      </Typography>
+      <Typography variant="body1" gutterBottom style={{ color: '#777' }}>
+        Discover your NPM libraries effortlessly.
+      </Typography>
+      <TextField
+        label="Enter NPM Username or Organization"
+        variant="outlined"
+        fullWidth
+        value={npmUsername}
+        onChange={handleNpmUserChange}
+        style={{ marginTop: '20px' }}
+      />
+    </Box>
   );
 }
 

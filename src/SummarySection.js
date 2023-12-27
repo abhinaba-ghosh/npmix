@@ -11,6 +11,18 @@ function SummarySection({ githubUsername }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+
+    if (githubUsername) { // Check if githubUsername is not empty
+      axios
+        .get(`https://api.github.com/users/${githubUsername}`)
+        .then((response) => {
+          setGithubData(response.data);
+        })
+        .catch((error) => {
+          setError(error);
+          console.error('Error fetching GitHub data:', error);
+        });
+
     axios
       .get(`https://api.github.com/users/${githubUsername}`)
       .then((response) => {
@@ -53,6 +65,7 @@ function SummarySection({ githubUsername }) {
         setError(error);
         console.error('Error fetching library data:', error);
       });
+    }
   }, [githubUsername]);
 
   if (error) {
@@ -98,14 +111,6 @@ function SummarySection({ githubUsername }) {
           </Typography>
           <Typography variant="body2" color="textSecondary">
             Stars: {githubData?.public_gists}
-          </Typography>
-        </CardContent>
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Number of Libraries: {libraryCount}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Total Downloads (npm): {formatMillions(totalDownloads)}
           </Typography>
         </CardContent>
       </CardContent>
